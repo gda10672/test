@@ -1,0 +1,170 @@
+@import "../vars.scss";
+
+div.tabs {
+  
+  padding: 0;
+  
+  border: 1px solid $gray-0;
+  @include omegaShadow();
+  @include omegaCorners(5px);
+  
+  @media all and (min-width: $tablet) {
+    display: inline-block;
+    
+  }
+  
+  h2 {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  // primary reset to default Drupal styling
+  ul.tabs {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: $font-size-med;
+    font-variant: small-caps;
+    
+    @include clearfix();
+    
+    @media all and (min-width: $tablet) {
+      display: block;
+      float: left;
+    }
+    
+    li {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      display: block;
+      float: left;
+      margin-right: 5px;
+        
+      a {
+        padding: 0;
+        margin: 0;
+        background: none;
+        border: 0;
+        display: block;
+        
+      }
+            
+      &.active {
+        a {
+          background: none;
+          border: none;
+        }
+      }
+    }
+  }
+  
+  ul.primary,
+  ul.secondary {
+    
+    li {
+      
+      a {
+        background: $gray-1;
+        color: $gray-3;
+        border: 1px solid $gray-2;
+        padding: 4px 8px;
+        @include omegaCorners(5px);
+        @include omegaShadow();
+        
+        &:hover {
+          background: darken($gray-1, $darken);
+          color: darken($gray-3, $darken);
+          border-color: darken($gray-2, $darken);
+        }
+        
+        &.active {
+          background: $blue-2;
+          border: 1px solid $blue-2;
+          color: $gray-0;
+          font-weight: bold;
+        }
+      }
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  ul.primary {
+    background: $gray-1;
+    padding: 5px;
+    padding-left: $font-size-med / 2;
+    padding-right: $font-size-med / 2;
+  }
+  ul.secondary {
+    font-size: $font-size-small;
+    padding-top: $font-size-med / 2;
+    padding-bottom: $font-size-med / 2;
+    padding-left: $font-size-med / 2;
+    padding-right: $font-size-med / 2;
+    
+    // top border on mobile to separate the two menus
+    border-top: 1px solid $gray-0;
+    
+    // remove the border
+    @media all and (min-width: $tablet) {
+      border-top: 0;
+    }
+    
+    
+    li {
+      
+      a {
+        
+        &.active {
+          //border: 1px solid $gray-0;
+        }
+      }
+    }
+    
+    
+    
+    @media all and (min-width: $tablet) {
+      padding-left: $font-size-med;
+      padding-right: $font-size-med;
+    }
+  }
+  
+  // secondary menu IS present
+  &.with--secondary {
+    
+    // this background is the darker background
+    // you see on the secondary tabs. Making the entire
+    // background this color ensures the "bars" line up
+    background: $blue-2;
+    
+    // primary tabs when secondary tabs are present
+    ul.primary {
+      
+      // top corners
+      @include omegaCornersAdvanced(4px, 4px, 0, 0);
+      
+      @media all and (min-width: $tablet) {
+        //@include omegaShadow();
+        @include omegaCornersReset();
+        
+        // 
+        @include omegaCornersAdvanced(4px, 0, 0, 4px);
+        border-right: 1px solid $gray-0;
+      }
+    }
+  }
+  
+  // secondary menu IS NOT present
+  &.without--secondary {
+    
+    // primary tabs when they are alone
+    ul.primary {
+      @include omegaCorners(4px);  
+    }
+    
+    
+  }
+}
